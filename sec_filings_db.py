@@ -238,7 +238,7 @@ class SECFilingProcessor:
                             html_anchor=getattr(sec, "html_anchor", ""),
                             part=getattr(sec, "part_title", None),  # Add part title
                             item=getattr(sec, "item_title", None)   # Add item title
-                        ).dict()
+                        ).model_dump()
                         
                         # Process both chunks and sentences for better embedding
                         # 1. Regular chunks for context
@@ -284,7 +284,7 @@ class SECFilingProcessor:
                                 statement_type=None,
                                 item_number=None,
                                 chunk_type="summary"
-                            ).dict()
+                            ).model_dump()
                             processed_chunks.append((mda_summary, summary_metadata))
                     except Exception as e:
                         logger.warning(f"Error getting MD&A summary: {str(e)}")
@@ -309,7 +309,7 @@ class SECFilingProcessor:
                                 statement_type=None,
                                 item_number=None,
                                 chunk_type="press_release"
-                            ).dict()
+                            ).model_dump()
                             
                             # Split content into chunks
                             chunks = self.splitter.split_text(str(press_release))
@@ -348,7 +348,7 @@ class SECFilingProcessor:
                         parent_section_title=None,
                         statement_type=None,
                         item_number=None
-                    ).dict()
+                    ).model_dump()
                     
                     processed_chunks.append((holdings_text, holdings_metadata))
                 
@@ -374,7 +374,7 @@ class SECFilingProcessor:
                                 parent_section_title=None,
                                 statement_type=None,
                                 item_number=None
-                            ).dict()
+                            ).model_dump()
                             
                             processed_chunks.append((summary_text, ownership_metadata))
                         except Exception as e:
@@ -420,7 +420,7 @@ class SECFilingProcessor:
                                 item_number=None,
                                 content_type=content_type,
                                 chunk_type="exhibit"
-                            ).dict()
+                            ).model_dump()
                             
                             # Split into chunks
                             chunks = self.splitter.split_text(exhibit_content)
@@ -460,7 +460,7 @@ class SECFilingProcessor:
                         parent_section_title=None,
                         statement_type=None,
                         item_number=None
-                    ).dict()
+                    ).model_dump()
                     
                     # Split text into chunks
                     chunks = self.splitter.split_text(filing_text)

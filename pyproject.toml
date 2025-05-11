@@ -1,0 +1,54 @@
+[build-system]
+requires = ["setuptools>=42", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "chromadb-company-sec-filings"
+version = "0.1.0"
+description = "SEC Filings ChromaDB Builder for company financial data analysis"
+readme = "README.md"
+requires-python = ">=3.8"
+license = {text = "MIT"}
+authors = [
+    {name = "Your Name", email = "your.email@example.com"}
+]
+
+dependencies = [
+    "edgartools>=4.0.2",
+    "sec_parsers>=0.549",
+    "unstructured>=0.17.2",
+    "chromadb>=0.4.24",
+    "sentence-transformers>=2.6.1",
+    "langchain>=0.1.16",
+    "pydantic>=2.6.4",
+    "typing-extensions>=4.10.0",
+    "tqdm>=4.66.2",
+    "google-adk>=0.1.13",
+    "litellm>=1.28.0",
+    "torch>=2.2.2",
+    "numpy>=1.26.4",
+]
+
+[project.optional-dependencies]
+api = [
+    "fastapi>=0.110.0",
+    "uvicorn>=0.29.0",
+]
+
+[tool.setuptools]
+packages = ["examples"]
+
+[tool.black]
+line-length = 88
+target-version = ["py38"]
+
+[tool.isort]
+profile = "black"
+line_length = 88
+
+[tool.mypy]
+python_version = "3.8"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+disallow_incomplete_defs = true 

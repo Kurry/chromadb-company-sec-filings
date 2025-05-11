@@ -22,7 +22,7 @@ logging.getLogger('google.adk').setLevel(logging.INFO)
 logging.getLogger('google.adk.tools').setLevel(logging.DEBUG)  # Keep tools debug for visibility
 
 # Define constants
-CHROMA_DB_PATH = os.path.join(os.path.dirname(__file__), "..", "sec_db")
+CHROMA_DB_PATH = os.path.join(os.path.dirname(__file__), "..", "amzn_db")
 APP_NAME = "amzn_sec_agent"
 USER_ID = "user"
 SESSION_ID = "session"
@@ -30,7 +30,7 @@ SESSION_ID = "session"
 # Local model configuration
 MODEL_OLLAMA_PLUTUS = "ollama_chat/0xroyce/Plutus-3B:latest"  # Financial model
 
-def chroma_search(query: str, n_results: int = 3):
+def chroma_search(query: str, n_results: int):
     """Search ChromaDB for relevant documents about SEC filings.
     
     Args:
@@ -45,8 +45,7 @@ def chroma_search(query: str, n_results: int = 3):
     logger.info(f"ChromaDB tool called with query: {query}, n_results: {n_results}")
     
     try:
-        # Explicitly convert n_results to int to avoid type issues
-        n_results = int(n_results)
+        n_results = n_results if n_results is not None else 3
         
         # Initialize ChromaDB client
         client = chromadb.PersistentClient(path=CHROMA_DB_PATH)

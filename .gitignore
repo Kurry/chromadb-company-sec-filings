@@ -161,3 +161,5 @@ cython_debug/
 
 **/.claude/settings.local.json
 /sec_db
+/amzn_db
+/ttd_sec_db
