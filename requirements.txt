@@ -1,0 +1,16 @@
+edgartools>=4.0.2
+sec_parsers>=0.549
+unstructured>=0.17.2
+chromadb>=0.4.24
+sentence-transformers>=2.6.1
+langchain>=0.1.16
+pydantic>=2.6.4
+typing-extensions>=4.10.0
+tqdm>=4.66.2
+google-adk>=0.1.13
+litellm>=1.28.0
+torch>=2.2.2
+numpy>=1.26.4
+# Optional for API serving:
+# fastapi>=0.110.0
+# uvicorn>=0.29.0
